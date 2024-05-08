@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ponggame;
 
 import java.awt.*;
@@ -11,32 +7,32 @@ import java.util.*;
 
 public class Ball extends Rectangle {
     Random random;
-    int xVelocity;
-    int yVelocity;
-    int inicialSpeed = 3 ;
+    double xVelocity;
+    double yVelocity;
+    int inicialSpeed = 4 ;
+    int angulo = new Random().nextInt(70);
     
     Ball(  int x, int y, int width, int heigth){
       super(x,y,width,heigth);
       random = new Random();
-      int randomXDirection = random.nextInt(3)-1;
+      double randomXDirection = Math.cos(Math.toRadians(angulo));
       
          setXDirection(randomXDirection*inicialSpeed);
       
-      int randomYDirection = random.nextInt(3)-1;
-
+      double randomYDirection = Math.sin(Math.toRadians(angulo));
          setYDirection(randomYDirection*inicialSpeed);
-      
+        
     }
-    public void setXDirection (int randomXDirection){
-      xVelocity = randomXDirection;
+    public void setXDirection (double d){
+      xVelocity = d;
        }
-    public void setYDirection (int randomYDirection){
-      yVelocity = randomYDirection;
+    public void setYDirection (double d){
+      yVelocity = d;
        }
     public void move(){
       x += xVelocity;
       y += yVelocity;
-    }
+       }
     public void draw(Graphics g){
       g.setColor(Color.WHITE);
       g.fillOval(x, y, width, height);
